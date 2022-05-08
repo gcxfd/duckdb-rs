@@ -13,7 +13,6 @@ categories = ["external-ffi-bindings", "database"]
 description = "Native bindings to the libduckdb library, C API"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [features]
 default = ["vcpkg", "pkg-config"]
 bundled = ["cc", "buildtime_bindgen"]
@@ -22,7 +21,9 @@ buildtime_bindgen = ["bindgen", "pkg-config", "vcpkg"]
 [dependencies]
 
 [build-dependencies]
-bindgen = { version = "0.59", optional = true, default-features = false, features = ["runtime"] }
+bindgen = { version = "0.59", optional = true, default-features = false, features = [
+  "static"
+] }
 pkg-config = { version = "0.3.24", optional = true }
 cc = { version = "1.0", features = ["parallel"], optional = true }
 vcpkg = { version = "0.2", optional = true }
